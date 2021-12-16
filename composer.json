@@ -1,0 +1,36 @@
+{
+  "name": "tillprochaska/kirby-augmented-fields",
+  "description": "Automatically cast raw field values based on field type.",
+  "license": "MIT",
+  "require-dev": {
+    "pestphp/pest": "^1.21",
+    "getkirby/cms": "3.6.1.1",
+    "friendsofphp/php-cs-fixer": "^3.3",
+    "psy/psysh": "@stable"
+  },
+  "authors": [
+    {
+      "name": "Till Prochaska",
+      "email": "mail@tillprochaska.de"
+    }
+  ],
+  "scripts": {
+    "test": "pest --coverage",
+    "cs": "php-cs-fixer fix --dry-run --config=.php-cs -- src/ tests/",
+    "cs:fix": "php-cs-fixer fix --config=.php-cs -- src/ tests/"
+  },
+  "autoload": {
+    "psr-4": {
+      "TillProchaska\\KirbyAugmentedFields\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "exclude-from-classmap": ["tests/support"],
+    "psr-4": {
+      "TillProchaska\\KirbyAugmentedFields\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "kirby-cms-path": false
+  }
+}

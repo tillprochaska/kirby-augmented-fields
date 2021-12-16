@@ -1,0 +1,57 @@
+BlocksField: Text: [{"content":{"text":"Lorem Ipsum"},"id":"b03f40c3-1dc5-4a89-8874-24f616f86e51","isHidden":false,"type":"text"}]
+
+----
+
+CheckboxesField: one, two, three
+
+----
+
+DateField: 2021-01-01
+
+----
+
+FilesField:
+- oscar-sutton-yihlaRCCvd4-unsplash.jpg
+- pauline-loroy-U3aF7hgUSrk-unsplash.jpg
+
+----
+
+FilesFieldSingle:
+- oscar-sutton-yihlaRCCvd4-unsplash.jpg
+
+----
+
+MultiselectField: one, two, three
+
+----
+
+PagesField:
+- other-page-1
+- other-page-2
+
+----
+
+PagesFieldSingle:
+- other-page-1
+
+----
+
+StructureField:
+- firstName: John
+  lastName: Doe
+
+----
+
+TagsField: one, two, three
+
+----
+
+ToggleField: yes
+
+----
+
+FieldWithoutAugmentationMethod: Hello World!
+
+----
+
+FieldWithoutDefinitionInBlueprint: Lorem Ipsum

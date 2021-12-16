@@ -1,0 +1,27 @@
+fields:
+  blocksField:
+    type: blocks
+  checkboxesField:
+    type: checkboxes
+  dateField:
+    type: date
+  filesField:
+    type: files
+  filesFieldSingle:
+    type: files
+    multiple: false
+  multiselectField:
+    type: multiselect
+  pagesField:
+    type: pages
+  pagesFieldSingle:
+    type: pages
+    multiple: false
+  structureField:
+    type: structure
+  tagsField:
+    type: tags
+  toggleField:
+    type: toggle
+  fieldWithoutAugmentationMethod:
+    type: text
