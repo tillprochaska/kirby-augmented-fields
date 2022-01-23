@@ -25,8 +25,12 @@ class AugmentedContent extends Content
         return $this->augmentField($key, parent::get($key));
     }
 
-    public function unaugmented(string $key = null): Field
+    public function unaugmented(string $key = null): Field|array
     {
+        if (null === $key) {
+            return parent::fields();
+        }
+
         return parent::get($key);
     }
 

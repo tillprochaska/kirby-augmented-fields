@@ -49,6 +49,12 @@ it('returns unaugmented field', function () {
     expect($field->value())->toEqual("- firstName: John\n  lastName: Doe\n  isAdmin: true");
 });
 
+it('returns unaugmented fields', function () {
+    $fields = $this->content->unaugmented();
+    expect($fields)->toBeArray();
+    expect($fields['datefield'])->toBeInstanceOf(Field::class);
+});
+
 it('augments field with custom augmentation method', function () {
     $field = $this->content->get('customField');
     expect($field)->toBeNumeric();
