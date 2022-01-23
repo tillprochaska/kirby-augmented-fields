@@ -25,3 +25,5 @@ fields:
     type: toggle
   fieldWithoutAugmentationMethod:
     type: text
+  customField:
+    type: custom

@@ -41,11 +41,17 @@ class AugmentedContent extends Content
             return $field;
         }
 
-        if (!method_exists(Augmentations::class, $type)) {
-            return $field;
+        $custom = kirby()->option('till-prochaska.augmented-fields.augmentations')[$type] ?? null;
+
+        if (is_callable($custom)) {
+            return $custom($field, $definition);
         }
 
-        return Augmentations::{$type}($field, $definition);
+        if (method_exists(Augmentations::class, $type)) {
+            return Augmentations::{$type}($field, $definition);
+        }
+
+        return $field;
     }
 
     protected function getFieldDefinition(string $key): ?array

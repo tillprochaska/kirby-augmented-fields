@@ -48,3 +48,8 @@ it('returns unaugmented field', function () {
     expect($field)->toBeInstanceOf(Field::class);
     expect($field->value())->toEqual("- firstName: John\n  lastName: Doe");
 });
+
+it('augments field with custom augmentation method', function () {
+    $field = $this->content->get('customField');
+    expect($field)->toBeNumeric();
+});
