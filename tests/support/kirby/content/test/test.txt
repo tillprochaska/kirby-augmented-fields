@@ -39,6 +39,7 @@ PagesFieldSingle:
 StructureField:
 - firstName: John
   lastName: Doe
+  isAdmin: true
 
 ----
 

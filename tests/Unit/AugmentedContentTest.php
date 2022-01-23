@@ -5,8 +5,8 @@ use Kirby\Cms\Structure;
 use TillProchaska\KirbyAugmentedFields\AugmentedContent;
 
 beforeEach(function () {
-    $page = page('test');
-    $this->content = new AugmentedContent($page->content()->data(), $page);
+    $this->page = page('test');
+    $this->content = new AugmentedContent($this->page->content()->data(), $this->page);
 });
 
 it('handles fields without field definition', function () {
@@ -46,10 +46,23 @@ it('returns all fields augmented', function () {
 it('returns unaugmented field', function () {
     $field = $this->content->unaugmented('structureField');
     expect($field)->toBeInstanceOf(Field::class);
-    expect($field->value())->toEqual("- firstName: John\n  lastName: Doe");
+    expect($field->value())->toEqual("- firstName: John\n  lastName: Doe\n  isAdmin: true");
 });
 
 it('augments field with custom augmentation method', function () {
     $field = $this->content->get('customField');
     expect($field)->toBeNumeric();
+});
+
+it('supports nested fields', function () {
+    $definitions = [
+        'nestedField' => [
+            'type' => 'toggle',
+        ],
+    ];
+
+    $data = ['nestedField' => '1'];
+    $content = new AugmentedContent($data, $this->page, $definitions);
+
+    expect($content->get('nestedField'))->toBeTrue();
 });

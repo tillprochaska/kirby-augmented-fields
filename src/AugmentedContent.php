@@ -7,6 +7,15 @@ use Kirby\Cms\Field;
 
 class AugmentedContent extends Content
 {
+    protected ?array $fieldDefinitions;
+
+    public function __construct(array $data = [], $parent = null, ?array $fieldDefinitions = null)
+    {
+        $this->fieldDefinitions = $fieldDefinitions;
+
+        parent::__construct($data, $parent);
+    }
+
     public function get(string $key = null): mixed
     {
         if (null === $key) {
@@ -56,7 +65,12 @@ class AugmentedContent extends Content
 
     protected function getFieldDefinition(string $key): ?array
     {
-        $definitions = $this->parent()->blueprint()->fields();
+        $definitions = $this->fieldDefinitions;
+
+        if (null === $definitions) {
+            $definitions = $this->parent()->blueprint()->fields();
+        }
+
         $definitions = array_change_key_case($definitions);
         $key = strtolower($key);
 

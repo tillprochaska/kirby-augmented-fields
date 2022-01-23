@@ -6,6 +6,7 @@ use Kirby\Cms\Files;
 use Kirby\Cms\Page;
 use Kirby\Cms\Pages;
 use Kirby\Toolkit\Collection;
+use TillProchaska\KirbyAugmentedFields\AugmentedStructureObject;
 
 beforeEach(function () {
     $this->page = page('test');
@@ -64,8 +65,12 @@ it('augments pages field with multiselect disabled', function () {
 
 it('augments structure field', function () {
     $field = $this->page->structureField();
+
     expect($field)->toBeInstanceOf(Structure::class);
+    expect($field->first())->toBeInstanceOf(AugmentedStructureObject::class);
+
     expect($field->first()->firstName())->toEqual('John');
+    expect($field->first()->isAdmin())->toBeTrue();
 });
 
 it('augments tags field', function () {

@@ -66,7 +66,15 @@ class Augmentations
 
     public static function structure(Field $field, array $definition): Structure
     {
-        return $field->toStructure();
+        return $field->toStructure()->map(function ($item) use ($definition) {
+            return new AugmentedStructureObject([
+                'id' => $item->id(),
+                'parent' => $item->parent(),
+                'content' => $item->content()->data(),
+                'structure' => $item->structure(),
+                'fieldDefinitions' => $definition['fields'],
+            ]);
+        });
     }
 
     public static function tags(Field $field, array $definition): Collection

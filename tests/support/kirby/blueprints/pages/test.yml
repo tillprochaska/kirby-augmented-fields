@@ -19,6 +19,13 @@ fields:
     multiple: false
   structureField:
     type: structure
+    fields:
+      firstName:
+        type: text
+      lastName:
+        type: text
+      isAdmin:
+        type: toggle
   tagsField:
     type: tags
   toggleField:
