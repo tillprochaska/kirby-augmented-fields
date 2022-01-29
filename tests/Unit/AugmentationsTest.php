@@ -6,6 +6,7 @@ use Kirby\Cms\Files;
 use Kirby\Cms\Page;
 use Kirby\Cms\Pages;
 use Kirby\Toolkit\Collection;
+use TillProchaska\KirbyAugmentedFields\AugmentedBlock;
 use TillProchaska\KirbyAugmentedFields\AugmentedStructureObject;
 
 beforeEach(function () {
@@ -13,9 +14,15 @@ beforeEach(function () {
 });
 
 it('augments blocks field', function () {
-    $field = $this->page->blocksField();
-    expect($field)->toBeInstanceOf(Blocks::class);
-});
+    $blocks = $this->page->blocksField();
+
+    expect($blocks)->toBeInstanceOf(Blocks::class);
+    expect($blocks->first())->toBeInstanceOf(AugmentedBlock::class);
+
+    expect($blocks->first()->firstName())->toEqual('John');
+    expect($blocks->first()->isAdmin())->toBeBool();
+    expect($blocks->first()->isAdmin())->toBeTrue();
+})->only();
 
 it('augments checkboxes field', function () {
     $field = $this->page->checkboxesField();
@@ -70,6 +77,7 @@ it('augments structure field', function () {
     expect($field->first())->toBeInstanceOf(AugmentedStructureObject::class);
 
     expect($field->first()->firstName())->toEqual('John');
+    expect($field->first()->isAdmin())->toBeBool();
     expect($field->first()->isAdmin())->toBeTrue();
 });
 

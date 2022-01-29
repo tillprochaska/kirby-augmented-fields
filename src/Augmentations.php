@@ -13,13 +13,29 @@ use Kirby\Cms\Pages;
 use Kirby\Cms\Structure;
 use Kirby\Cms\User;
 use Kirby\Cms\Users;
+use Kirby\Form\Field\BlocksField;
 use Kirby\Toolkit\Collection;
 
 class Augmentations
 {
     public static function blocks(Field $field, array $definition): Blocks
     {
-        return $field->toBlocks();
+        $fieldsets = (new BlocksField(array_merge(
+            $definition,
+            ['model' => $field->parent()]
+        )))->fieldsets();
+
+        return $field->toBlocks()->map(function ($block) use ($fieldsets) {
+            return new AugmentedBlock([
+                'id' => $block->id(),
+                'parent' => $block->parent(),
+                'siblings' => $block->siblings(),
+                'content' => $block->content()->data(),
+                'type' => $block->type(),
+                'isHidden' => $block->isHidden(),
+                'fieldDefinitions' => $fieldsets->find($block->type())->fields(),
+            ]);
+        });
     }
 
     public static function checkboxes(Field $field, array $definition): Collection

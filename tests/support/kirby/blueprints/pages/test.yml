@@ -1,6 +1,15 @@
 fields:
   blocksField:
     type: blocks
+    fieldsets:
+      customFieldset:
+        fields:
+          firstName:
+            type: text
+          lastName:
+            type: text
+          isAdmin:
+            type: toggle
   checkboxesField:
     type: checkboxes
   dateField:
