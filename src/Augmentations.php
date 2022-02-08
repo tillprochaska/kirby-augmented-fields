@@ -43,8 +43,12 @@ class Augmentations
         return new Collection($field->split());
     }
 
-    public static function date(Field $field, array $definition): DateTime
+    public static function date(Field $field, array $definition): ?DateTime
     {
+        if ($field->isEmpty()) {
+            return null;
+        }
+
         return new DateTime($field->value());
     }
 

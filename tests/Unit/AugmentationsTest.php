@@ -22,7 +22,7 @@ it('augments blocks field', function () {
     expect($blocks->first()->firstName())->toEqual('John');
     expect($blocks->first()->isAdmin())->toBeBool();
     expect($blocks->first()->isAdmin())->toBeTrue();
-})->only();
+});
 
 it('augments checkboxes field', function () {
     $field = $this->page->checkboxesField();
@@ -34,6 +34,11 @@ it('augments date field', function () {
     $field = $this->page->dateField();
     expect($field)->toBeInstanceOf(DateTime::class);
     expect($field)->toEqual(new DateTime('2021-01-01'));
+});
+
+it('returns null if date field is empty', function () {
+    $field = $this->page->emptyDateField();
+    expect($field)->toBeNull();
 });
 
 it('augments files field', function () {
