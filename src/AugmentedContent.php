@@ -54,7 +54,7 @@ class AugmentedContent extends Content
             return $field;
         }
 
-        $custom = kirby()->option('till-prochaska.augmented-fields.augmentations')[$type] ?? null;
+        $custom = kirby()->option('tillprochaska.augmented-fields.augmentations')[$type] ?? null;
 
         if (is_callable($custom)) {
             return $custom($field, $definition);
