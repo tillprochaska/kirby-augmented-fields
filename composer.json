@@ -3,6 +3,7 @@
   "description": "Automatically cast raw field values based on field type.",
   "license": "MIT",
   "require": {
+    "php": ">=8.1",
     "getkirby/cms": "^3.6"
   },
   "require-dev": {
