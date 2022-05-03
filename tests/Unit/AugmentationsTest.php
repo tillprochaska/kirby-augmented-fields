@@ -24,6 +24,11 @@ it('augments blocks field', function () {
     expect($blocks->first()->isAdmin())->toBeTrue();
 });
 
+it('handles blocks without fieldsets gracefully', function () {
+    $blocks = $this->page->blocksFieldWithoutFieldset();
+    expect($blocks)->first()->hello()->toEqual('world');
+});
+
 it('augments checkboxes field', function () {
     $field = $this->page->checkboxesField();
     expect($field)->toBeInstanceOf(Collection::class);

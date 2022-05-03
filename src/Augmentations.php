@@ -26,6 +26,13 @@ class Augmentations
         )))->fieldsets();
 
         return $field->toBlocks()->map(function ($block) use ($fieldsets) {
+            $fieldDefinitions = $fieldsets->find($block->type())?->fields();
+
+            // Skip augmentation if there’s no fieldset for the block type
+            if (!$fieldDefinitions) {
+                return $block;
+            }
+
             return new AugmentedBlock([
                 'id' => $block->id(),
                 'parent' => $block->parent(),

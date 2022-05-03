@@ -10,6 +10,8 @@ fields:
             type: text
           isAdmin:
             type: toggle
+  blocksFieldWithoutFieldset:
+    type: blocks
   checkboxesField:
     type: checkboxes
   dateField:
