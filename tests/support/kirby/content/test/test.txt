@@ -2,6 +2,10 @@ BlocksField: [{"content":{"firstName":"John","lastName":"Doe","isAdmin":"true"},
 
 ----
 
+BlocksFieldWithoutFieldset: [{"content":{"hello":"world"},"id":"b03f40c3-1dc5-4a89-8874-24f616f86e51","isHidden":false,"type":"thisFieldsetIsNotSetUp"}]
+
+----
+
 CheckboxesField: one, two, three
 
 ----
